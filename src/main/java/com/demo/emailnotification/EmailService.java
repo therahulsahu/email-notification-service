@@ -6,6 +6,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+
 @Service
 public class EmailService {
 
@@ -28,6 +30,7 @@ public class EmailService {
             mailMessage.setSubject(details.getSubject());
 
             javaMailSender.send(mailMessage);
+            System.out.println("mail sent to " + Arrays.toString(mailMessage.getTo()));
             return "Mail Sent Successfully...";
         } catch (Exception e) {
             System.out.println(e.getMessage());
