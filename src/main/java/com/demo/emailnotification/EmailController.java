@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.mail.MessagingException;
+
 @RestController
 public class EmailController {
 
@@ -25,8 +27,8 @@ public class EmailController {
         String status=smsService.sendsms(smsrequest);
         if("sent".equals(status) || "queued".equals(status)) {
             System.out.println("message sent");
-            return new ResponseEntity<Object>("sent successfully", HttpStatus.OK);
+            return new ResponseEntity<>("sent successfully", HttpStatus.OK);
         }
-        return new ResponseEntity<Object>("failed to send message",HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("failed to send message",HttpStatus.NOT_FOUND);
     }
 }
